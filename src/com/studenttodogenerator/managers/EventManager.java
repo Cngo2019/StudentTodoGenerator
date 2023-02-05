@@ -79,7 +79,25 @@ public class EventManager {
         System.out.println("Enter in the name of the file you want to create (DO NOT INCLUDE THE .txt EXTENSION): ");
         String fileName = sc.nextLine();
 
-        SheetWriter.writeExcelSheet(listOfAssignments, fileName);
+        SheetWriter.writeSheet(listOfAssignments, fileName);
+
+    }
+
+    /**
+     *
+     */
+    public void handleReadTodoSheet() {
+        boolean userIsViewing = true;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Type in the name of the sheet you want to read: ");
+        String name = sc.nextLine();
+        name = name.trim();
+
+        // Set assignmentRepository's array list and sort by due date
+
+        // Display all the current todo assignments
+
+        // Prompt the user with MORE menu options to filter by date or by class
 
     }
 

@@ -24,13 +24,14 @@ public class SheetWriter {
 
     }
 
-    public static void writeExcelSheet(List<Assignment> assignmentList, String scheduleName) {
+    public static void writeSheet(List<Assignment> assignmentList, String scheduleName) {
         try {
+            System.out.println("Writing...");
             BufferedWriter writer = new BufferedWriter(new FileWriter(scheduleName + ".txt"));
             for (Assignment assignment : assignmentList) {
                 writer.write("Due Date: " + assignment.getDueDate() + "\n" +
                              "Class: " + assignment.getClassName()  + "\n" +
-                             "Description: " + assignment.getAssignmentDescription());
+                             "Description: " + assignment.getAssignmentDescription() + "\n");
             }
             writer.close();
         } catch(IOException e) {
