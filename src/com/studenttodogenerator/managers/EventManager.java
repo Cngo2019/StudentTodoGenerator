@@ -71,7 +71,6 @@ public class EventManager {
             System.out.println("All done? Type N to add another assignment or Y to finish. ");
             String answer = sc.nextLine().toUpperCase();
 
-            System.out.println(assignment.toString());
             if (answer.equals("Y")) {
                 break;
             }
