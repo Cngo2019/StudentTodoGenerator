@@ -35,7 +35,7 @@ public class SheetReader {
                 if (currentLine.equals("")) {
                     continue;
                 }
-                stringList.add(currentLine.split(":")[1].trim());
+                stringList.add(currentLine.trim());
             }
             bufferReader.close();
         } catch (IOException e) {
@@ -62,6 +62,10 @@ public class SheetReader {
                 String[] splittedAssignment = currentAssignmentString.split(",");
 
                 Assignment newAssignment = new Assignment();
+                newAssignment.setDueDate(splittedAssignment[0]);
+                newAssignment.setClassName(splittedAssignment[1]);
+                newAssignment.setAssignmentDescription(splittedAssignment[2]);
+                
                 counter = 0;
                 currentAssignmentString = "";
             }

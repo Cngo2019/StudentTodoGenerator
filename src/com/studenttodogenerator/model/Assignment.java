@@ -10,8 +10,6 @@ public class Assignment {
     private Date dueDate;
     private String className;
 
-
-    public Assignment(String date, ) 
     public String getAssignmentDescription() {
         return assignmentDescription;
     }
@@ -26,6 +24,11 @@ public class Assignment {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        //implement here
+        return;
     }
 
     public String getClassName() {
