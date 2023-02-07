@@ -55,9 +55,11 @@ public class SheetReader {
         int counter = 0;
         String currentAssignmentString = "";
         for (String s : stringList) {
-            currentAssignmentString = currentAssignmentString + "," + s;
+            currentAssignmentString = currentAssignmentString + s + ",";
+            System.out.println(currentAssignmentString);
             counter++;
 
+            // Every 3rd iteration go ahead and create the new assignment
             if (counter == 3) {
                 String[] splittedAssignment = currentAssignmentString.split(",");
 
@@ -68,7 +70,11 @@ public class SheetReader {
                 
                 counter = 0;
                 currentAssignmentString = "";
+                currentAssignments.add(newAssignment);
             }
         }
+
+        System.out.println("Printing..." + currentAssignments);
+        return currentAssignments;
     }
 }

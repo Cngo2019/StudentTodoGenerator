@@ -1,5 +1,6 @@
 package com.studenttodogenerator.model;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -26,8 +27,16 @@ public class Assignment {
         this.dueDate = dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(String dueDateString) {
         //implement here
+        Date newDate = null;
+        try {
+            newDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dueDateString);
+        } catch(ParseException e) {
+            System.out.println(e);
+            return;
+        }
+        this.dueDate = newDate;
         return;
     }
 
