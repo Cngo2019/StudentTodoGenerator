@@ -50,10 +50,10 @@ public class EventManager {
 
             System.out.println("Enter in the due date in mm-dd-yyyy format: ");
             String dueDateInput = sc.nextLine();
-            SimpleDateFormat formatter = new SimpleDateFormat("MM-DD-yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("MM-DD-yyyy HH:mm:ss");
             try {
-                Date dueDate = formatter.parse(dueDateInput);
-                assignment.setDueDate(new Date());
+                Date dueDate = formatter.parse(dueDateInput + " 00:00:00");
+                assignment.setDueDate(dueDate);
             } catch (ParseException e) {
                 return;
             }
