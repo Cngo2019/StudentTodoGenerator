@@ -91,13 +91,16 @@ public class EventManager {
         System.out.println("Type in the name of the sheet you want to read: ");
         String name = sc.nextLine();
         name = name.trim();
-
+        // Read the files into objects
+        List<Assignment> currentAssignments = sheetReader.readAssignments(name);
         // Set assignmentRepository's array list and sort by due date
-
+        assignmentRepository.setCurrentAssignments(null);
         // Display all the current todo assignments
 
         // Prompt the user with MORE menu options to filter by date or by class
 
     }
+
+
 
 }

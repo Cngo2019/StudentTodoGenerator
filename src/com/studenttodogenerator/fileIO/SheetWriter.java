@@ -31,7 +31,7 @@ public class SheetWriter {
             for (Assignment assignment : assignmentList) {
                 writer.write("Due Date: " + assignment.getDueDate() + "\n" +
                              "Class: " + assignment.getClassName()  + "\n" +
-                             "Description: " + assignment.getAssignmentDescription() + "\n");
+                             "Description: " + assignment.getAssignmentDescription() + "\n\n");
             }
             writer.close();
         } catch(IOException e) {
