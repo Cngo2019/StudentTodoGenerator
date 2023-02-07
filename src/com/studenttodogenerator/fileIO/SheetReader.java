@@ -35,17 +35,36 @@ public class SheetReader {
                 if (currentLine.equals("")) {
                     continue;
                 }
-                stringList.add(currentLine);
+                stringList.add(currentLine.split(":")[1].trim());
             }
             bufferReader.close();
-
         } catch (IOException e) {
             System.out.println("SOMETHING WENT WRONG!");
             return null;
         }
+        
+
 
         System.out.println("CURRENT LIST IS " + stringList);
-        return null;
+        return turnIntoAssignments(stringList);
     }
 
+    private List<Assignment> turnIntoAssignments(List<String> stringList) {
+        List<Assignment> currentAssignments = new ArrayList<>();
+        
+        int counter = 0;
+        String currentAssignmentString = "";
+        for (String s : stringList) {
+            currentAssignmentString = currentAssignmentString + "," + s;
+            counter++;
+
+            if (counter == 3) {
+                String[] splittedAssignment = currentAssignmentString.split(",");
+
+                Assignment newAssignment = new Assignment();
+                counter = 0;
+                currentAssignmentString = "";
+            }
+        }
+    }
 }

@@ -11,6 +11,7 @@ public class Assignment {
     private String className;
 
 
+    public Assignment(String date, ) 
     public String getAssignmentDescription() {
         return assignmentDescription;
     }

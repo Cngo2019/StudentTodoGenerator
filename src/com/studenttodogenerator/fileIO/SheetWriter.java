@@ -29,9 +29,9 @@ public class SheetWriter {
             System.out.println("Writing...");
             BufferedWriter writer = new BufferedWriter(new FileWriter(scheduleName + ".txt"));
             for (Assignment assignment : assignmentList) {
-                writer.write("Due Date: " + assignment.getDueDate() + "\n" +
-                             "Class: " + assignment.getClassName()  + "\n" +
-                             "Description: " + assignment.getAssignmentDescription() + "\n\n");
+                writer.write(assignment.getDueDate() + "\n" +
+                             assignment.getClassName()  + "\n" +
+                             assignment.getAssignmentDescription() + "\n\n");
             }
             writer.close();
         } catch(IOException e) {

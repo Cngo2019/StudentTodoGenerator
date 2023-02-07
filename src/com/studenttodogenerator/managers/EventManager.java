@@ -94,7 +94,7 @@ public class EventManager {
         // Read the files into objects
         List<Assignment> currentAssignments = sheetReader.readAssignments(name);
         // Set assignmentRepository's array list and sort by due date
-        assignmentRepository.setCurrentAssignments(null);
+        assignmentRepository.setCurrentAssignments(currentAssignments);
         // Display all the current todo assignments
 
         // Prompt the user with MORE menu options to filter by date or by class
