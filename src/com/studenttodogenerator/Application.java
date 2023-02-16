@@ -19,7 +19,7 @@ public class Application {
         while (userIsUsing) {
             System.out.println("Select which option you want by typing the number in the terminal and pressing enter: ");
             int userOption = sc.nextInt();
-            
+            sc.nextLine();
             switch (userOption) {
                 case 1:
                     eventManager.handleCreateTodoSheet();

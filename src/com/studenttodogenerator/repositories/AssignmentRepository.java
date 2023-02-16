@@ -35,17 +35,24 @@ public class AssignmentRepository {
         return this.currentAssignments;
     }
 
-    public List<Assignment> filterByClassName(String className) {
-        return null;
+    public void displayByClassName(String className) {
+        System.out.println("\n\n\n================================= ASSIGNMENTS DUE ON  " + className + "=================================");
+        for (Assignment assignment : currentAssignments) {
+            if (assignment.getClassName().equals(className)) {
+                System.out.println("DUE DATE: " + assignment.getDueDate() + " (" + assignment.getClassName() + ")" + "\n" + assignment.getAssignmentDescription() + "\n\n");
+            }
+        }
     }
 
-    public List<Assignment> filterByDueDate(Date date) {
-        return null;
+    public void displayByDueDate(Date date) {
+        System.out.println("\n\n\n================================= ASSIGNMENTS DUE ON  " + date.toString() + "=================================");
+        for (Assignment assignment : currentAssignments) {
+            if (assignment.getDueDate().equals(date)) {
+                System.out.println("DUE DATE: " + assignment.getDueDate() + " (" + assignment.getClassName() + ")" + "\n" + assignment.getAssignmentDescription() + "\n\n");
+            }
+        }
     }
 
-    public List<Assignment> filterByPriority(Date date) {
-        return null;
-    }
 
     public void printCurrentAssignments() {
         if (currentAssignments == null) {

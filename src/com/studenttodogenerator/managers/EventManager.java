@@ -48,16 +48,7 @@ public class EventManager {
         while (true) {
 
             Assignment assignment = new Assignment();
-
-            System.out.println("Enter in the due date in mm-dd-yyyy format: ");
-            String dueDateInput = sc.nextLine();
-            SimpleDateFormat formatter = new SimpleDateFormat("MM-DD-yyyy HH:mm:ss");
-            try {
-                Date dueDate = formatter.parse(dueDateInput + " 00:00:00");
-                assignment.setDueDate(dueDate);
-            } catch (ParseException e) {
-                return;
-            }
+            assignment.setDueDate(generateDateFromString());
 
             System.out.println("Enter in the assignment description: ");
             String description = sc.nextLine();
@@ -90,7 +81,6 @@ public class EventManager {
      *
      */
     public void handleReadTodoSheet() {
-        boolean userIsViewing = true;
         Scanner sc = new Scanner(System.in);
         System.out.println("Type in the name of the sheet you want to read: ");
         String name = sc.nextLine();
@@ -105,18 +95,24 @@ public class EventManager {
         assignmentRepository.displayAllAssignments();
 
         int userChoice = -1;
+        boolean userIsViewing = true;
         while (userIsViewing) {
-            System.out.println("1. Show me all assignments \n 2. Filter by specific due date \n 3. Filter by class name \n 4. Exit Program (You can enter any OTHER number that 1, 2, and 3 \nSelect the number corresponding to the option: ");
+            System.out.println(" 1. Show me all assignments \n 2. Filter by specific due date \n 3. Filter by class name \n 4. Exit Program (You can enter any OTHER number that 1, 2, and 3 \nSelect the number corresponding to the option: ");
             userChoice = sc.nextInt();
+            sc.nextLine();
             switch(userChoice) {
                 case 1:
                     assignmentRepository.displayAllAssignments();
                     break;
                 case 2:
-
+                    Date userDate = generateDateFromString();
+                    assignmentRepository.displayByDueDate(userDate);
                     break;
 
                 case 3:
+                    System.out.println("Enter the class name (Example like ITCS3112): ");
+                    String userEntry = sc.nextLine();
+                    assignmentRepository.displayByClassName(userEntry);
                     break;
 
                 default:
@@ -126,8 +122,18 @@ public class EventManager {
         
         }
             
-
-        
     }
 
+    private Date generateDateFromString() {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter in the due date in mm-dd-yyyy format: ");
+            String dueDateInput = sc.nextLine();
+            SimpleDateFormat formatter = new SimpleDateFormat("MM-DD-yyyy HH:mm:ss");
+            try {
+                Date dueDate = formatter.parse(dueDateInput + " 00:00:00");
+                return dueDate;
+            } catch (ParseException e) {
+                return null;
+            }
+    }
 }
