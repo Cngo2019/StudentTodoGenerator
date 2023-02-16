@@ -4,6 +4,7 @@ import com.studenttodogenerator.model.Assignment;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Collections;
 
 /**
  * Place to store the assignments. Functionlity for the
@@ -26,6 +27,7 @@ public class AssignmentRepository {
     }
 
     public void setCurrentAssignments(List<Assignment> currentAssignments) {
+        sortByDueDate();
         this.currentAssignments = currentAssignments;
     }
 
@@ -55,10 +57,20 @@ public class AssignmentRepository {
         }
     }
 
+
+    public void displayAssignments() {
+        System.out.println("================================= YOUR CURRENT ASSIGNMENTS ARE =================================");
+        for (Assignment assignment : currentAssignments) {
+            System.out.println(assignment.getDueDate() + " (" + assignment.getClassName() + ")" + "\n" + assignment.getAssignmentDescription() + "\n\n");
+        }
+    }
+
+    
+
     /**
      * Method should get called when we set currentAssignments.
      */
     private void sortByDueDate() {
-
+        Collections.sort(currentAssignments);
     }
 }

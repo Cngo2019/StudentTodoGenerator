@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
 /**
  * This is the class the user will interact with the most.
@@ -75,9 +76,12 @@ public class EventManager {
                 break;
             }
         }
+
+        
         System.out.println("Enter in the name of the file you want to create (DO NOT INCLUDE THE .txt EXTENSION): ");
         String fileName = sc.nextLine();
 
+        Collections.sort(listOfAssignments);
         SheetWriter.writeSheet(listOfAssignments, fileName);
 
     }
@@ -96,11 +100,8 @@ public class EventManager {
         // Set assignmentRepository's array list and sort by due date
         assignmentRepository.setCurrentAssignments(currentAssignments);
         // Display all the current todo assignments
-
-        // Prompt the user with MORE menu options to filter by date or by class
-
+        assignmentRepository.displayAssignments();
+        
     }
-
-
 
 }

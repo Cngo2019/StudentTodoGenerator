@@ -56,7 +56,6 @@ public class SheetReader {
         String currentAssignmentString = "";
         for (String s : stringList) {
             currentAssignmentString = currentAssignmentString + s + ",";
-            System.out.println(currentAssignmentString);
             counter++;
 
             // Every 3rd iteration go ahead and create the new assignment
@@ -74,7 +73,6 @@ public class SheetReader {
             }
         }
 
-        System.out.println("Printing..." + currentAssignments);
         return currentAssignments;
     }
 }

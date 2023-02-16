@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Model for an assignment or todo list
  */
-public class Assignment {
+public class Assignment implements Comparable<Assignment> {
     private String assignmentDescription;
     private Date dueDate;
     private String className;
@@ -50,6 +50,11 @@ public class Assignment {
 
     public String toString() {
         return dueDate + " - " + className + " \n" + assignmentDescription;
+    }
+
+    @Override
+    public int compareTo(Assignment assignment) {
+        return this.getDueDate().compareTo(assignment.getDueDate());
     }
 
 }
