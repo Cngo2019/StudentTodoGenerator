@@ -1,0 +1,24 @@
+Mon Jan 16 00:00:00 EST 2023
+ITSC1213
+Complete project of itsc1213
+
+Mon Jan 16 00:00:00 EST 2023
+OPRS3111
+Homework 5 question 1 and 2
+
+Tue Jan 17 00:00:00 EST 2023
+OPRS3111
+Complete question 4 and 5 of hwk 5
+
+Wed Jan 18 00:00:00 EST 2023
+ITSC3181
+Textbook reading chapter 2.12
+
+Thu Jan 19 00:00:00 EST 2023
+ITSC3181
+Read chapter 2.8 - 2.9 of textbook
+
+Fri Jan 20 00:00:00 EST 2023
+ITSC3160
+Midterm opens up for databases
+

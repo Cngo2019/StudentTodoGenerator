@@ -27,8 +27,8 @@ public class AssignmentRepository {
     }
 
     public void setCurrentAssignments(List<Assignment> currentAssignments) {
-        sortByDueDate();
         this.currentAssignments = currentAssignments;
+        sortByDueDate();
     }
 
     public List<Assignment> getCurrentAssignments(List<Assignment> currentAssignments) {
@@ -58,10 +58,10 @@ public class AssignmentRepository {
     }
 
 
-    public void displayAssignments() {
+    public void displayAllAssignments() {
         System.out.println("================================= YOUR CURRENT ASSIGNMENTS ARE =================================");
         for (Assignment assignment : currentAssignments) {
-            System.out.println(assignment.getDueDate() + " (" + assignment.getClassName() + ")" + "\n" + assignment.getAssignmentDescription() + "\n\n");
+            System.out.println("DUE DATE: " + assignment.getDueDate() + " (" + assignment.getClassName() + ")" + "\n" + assignment.getAssignmentDescription() + "\n\n");
         }
     }
 

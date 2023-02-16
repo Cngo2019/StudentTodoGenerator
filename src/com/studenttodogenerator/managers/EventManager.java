@@ -99,8 +99,34 @@ public class EventManager {
         List<Assignment> currentAssignments = sheetReader.readAssignments(name);
         // Set assignmentRepository's array list and sort by due date
         assignmentRepository.setCurrentAssignments(currentAssignments);
+        
+        System.out.println("\n\n\n Here is a list of all your assignments for this specific sheet: ");
         // Display all the current todo assignments
-        assignmentRepository.displayAssignments();
+        assignmentRepository.displayAllAssignments();
+
+        int userChoice = -1;
+        while (userIsViewing) {
+            System.out.println("1. Show me all assignments \n 2. Filter by specific due date \n 3. Filter by class name \n 4. Exit Program (You can enter any OTHER number that 1, 2, and 3 \nSelect the number corresponding to the option: ");
+            userChoice = sc.nextInt();
+            switch(userChoice) {
+                case 1:
+                    assignmentRepository.displayAllAssignments();
+                    break;
+                case 2:
+
+                    break;
+
+                case 3:
+                    break;
+
+                default:
+                    userIsViewing = false;
+                    break;
+            }
+        
+        }
+            
+
         
     }
 
