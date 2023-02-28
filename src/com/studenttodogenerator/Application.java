@@ -15,7 +15,6 @@ public class Application {
 
 
         boolean userIsUsing = true;
-
         while (userIsUsing) {
             System.out.println("Select which option you want by typing the number in the terminal and pressing enter: ");
             int userOption = sc.nextInt();

@@ -27,17 +27,11 @@ public class Assignment implements Comparable<Assignment> {
         this.dueDate = dueDate;
     }
 
-    public void setDueDate(String dueDateString) {
+    public void setDueDate(String dueDateString) throws ParseException{
         //implement here
         Date newDate = null;
-        try {
-            newDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dueDateString);
-        } catch(ParseException e) {
-            System.out.println(e);
-            return;
-        }
+        newDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dueDateString);
         this.dueDate = newDate;
-        return;
     }
 
     public String getClassName() {

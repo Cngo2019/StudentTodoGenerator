@@ -48,7 +48,13 @@ public class EventManager {
         while (true) {
 
             Assignment assignment = new Assignment();
-            assignment.setDueDate(generateDateFromString());
+            
+            try {
+                assignment.setDueDate(generateDateFromString());
+            } catch(ParseException e) {
+                System.out.println("You entered the date in the incorrect format. Please start over");
+                continue;
+            }
 
             System.out.println("Enter in the assignment description: ");
             String description = sc.nextLine();
@@ -86,7 +92,13 @@ public class EventManager {
         String name = sc.nextLine();
         name = name.trim();
         // Read the files into objects
-        List<Assignment> currentAssignments = sheetReader.readAssignments(name);
+        List<Assignment> currentAssignments = new ArrayList<>();
+        try {
+            currentAssignments = sheetReader.readAssignments(name);
+        } catch(ParseException e) {
+            System.out.println("Something went wrong.");
+            return;
+        }
         // Set assignmentRepository's array list and sort by due date
         assignmentRepository.setCurrentAssignments(currentAssignments);
         
@@ -105,7 +117,15 @@ public class EventManager {
                     assignmentRepository.displayAllAssignments();
                     break;
                 case 2:
-                    Date userDate = generateDateFromString();
+                    Date userDate = null;
+                    try {
+                        userDate = generateDateFromString();
+                    } catch(ParseException e) {
+                        System.out.println("Something went wrong during parsing");
+                        userIsViewing = false;
+                        continue;
+                    }
+                        
                     assignmentRepository.displayByDueDate(userDate);
                     break;
 
@@ -124,16 +144,12 @@ public class EventManager {
             
     }
 
-    private Date generateDateFromString() {
+    private Date generateDateFromString() throws ParseException {
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter in the due date in mm-dd-yyyy format: ");
             String dueDateInput = sc.nextLine();
             SimpleDateFormat formatter = new SimpleDateFormat("MM-DD-yyyy HH:mm:ss");
-            try {
-                Date dueDate = formatter.parse(dueDateInput + " 00:00:00");
-                return dueDate;
-            } catch (ParseException e) {
-                return null;
-            }
+            Date dueDate = formatter.parse(dueDateInput + " 00:00:00");
+            return dueDate; 
     }
 }

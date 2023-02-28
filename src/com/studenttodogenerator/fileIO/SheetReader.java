@@ -5,6 +5,7 @@ import java.util.List;
 import com.studenttodogenerator.model.Assignment;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 /**
  * Class handles the reading of an excel file
  */
@@ -22,7 +23,7 @@ public class SheetReader {
 
     }
 
-    public List<Assignment> readAssignments(String name) {
+    public List<Assignment> readAssignments(String name) throws ParseException {
 
         List<String> stringList = new ArrayList<>();
         BufferedReader bufferReader = null;
@@ -49,7 +50,7 @@ public class SheetReader {
         return turnIntoAssignments(stringList);
     }
 
-    private List<Assignment> turnIntoAssignments(List<String> stringList) {
+    private List<Assignment> turnIntoAssignments(List<String> stringList) throws ParseException {
         List<Assignment> currentAssignments = new ArrayList<>();
         
         int counter = 0;
