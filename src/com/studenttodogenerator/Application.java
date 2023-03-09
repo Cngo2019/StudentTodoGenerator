@@ -10,12 +10,9 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         EventManager eventManager = EventManager.getInstance();
 
-
-        eventManager.displayOptions();
-
-
         boolean userIsUsing = true;
         while (userIsUsing) {
+            eventManager.displayOptions();
             System.out.println("Select which option you want by typing the number in the terminal and pressing enter: ");
             int userOption = sc.nextInt();
             sc.nextLine();

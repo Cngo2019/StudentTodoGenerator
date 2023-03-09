@@ -39,6 +39,9 @@ public class EventManager {
     }
 
     public void displayOptions() {
+        System.out.println("1. Create a todo sheet");
+        System.out.println("2. Read an existing todo sheet");
+        System.out.println("3. Exit program");
 
     }
 
@@ -83,9 +86,6 @@ public class EventManager {
 
     }
 
-    /**
-     *
-     */
     public void handleReadTodoSheet() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Type in the name of the sheet you want to read: ");
@@ -96,7 +96,12 @@ public class EventManager {
         try {
             currentAssignments = sheetReader.readAssignments(name);
         } catch(ParseException e) {
-            System.out.println("Something went wrong.");
+            System.out.println("Something went wrong when reading the sheet");
+            return;
+        }
+
+        if (currentAssignments == null) {
+            System.out.println("The list does not exist or nothing was found");
             return;
         }
         // Set assignmentRepository's array list and sort by due date
@@ -148,7 +153,7 @@ public class EventManager {
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter in the due date in mm-dd-yyyy format: ");
             String dueDateInput = sc.nextLine();
-            SimpleDateFormat formatter = new SimpleDateFormat("MM-DD-yyyy HH:mm:ss");
+            SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
             Date dueDate = formatter.parse(dueDateInput + " 00:00:00");
             return dueDate; 
     }
