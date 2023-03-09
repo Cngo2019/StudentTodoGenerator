@@ -26,7 +26,6 @@ public class SheetWriter {
 
     public static void writeSheet(List<Assignment> assignmentList, String scheduleName) {
         try {
-            System.out.println("Writing...");
             BufferedWriter writer = new BufferedWriter(new FileWriter(scheduleName + ".txt"));
             for (Assignment assignment : assignmentList) {
                 writer.write(assignment.getDueDate() + "\n" +

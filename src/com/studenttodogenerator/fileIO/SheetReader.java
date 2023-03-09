@@ -28,7 +28,6 @@ public class SheetReader {
         List<String> stringList = new ArrayList<>();
         BufferedReader bufferReader = null;
         try {
-            System.out.println("Testing");
             bufferReader = new BufferedReader(new FileReader(name + ".txt"));
             String currentLine = "";
             while((currentLine = bufferReader.readLine()) != null) {
@@ -40,13 +39,11 @@ public class SheetReader {
             }
             bufferReader.close();
         } catch (IOException e) {
-            System.out.println("SOMETHING WENT WRONG!");
             return null;
         }
         
 
 
-        System.out.println("CURRENT LIST IS " + stringList);
         return turnIntoAssignments(stringList);
     }
 
