@@ -69,10 +69,10 @@ public class EventManager {
 
             listOfAssignments.add(assignment);
 
-            System.out.println("All done? Type N to add another assignment or Y to finish. ");
+            System.out.println("Add another assignment? Type `Y` to add another assignment. `N` to proceed to file naming: ");
             String answer = sc.nextLine().toUpperCase();
 
-            if (answer.equals("Y")) {
+            if (answer.equals("N")) {
                 break;
             }
         }
@@ -88,9 +88,10 @@ public class EventManager {
 
     public void handleReadTodoSheet() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Type in the name of the sheet you want to read: ");
+        System.out.println("Type in the name of the sheet you want to read (do not include the .txt extention): ");
         String name = sc.nextLine();
         name = name.trim();
+
         // Read the files into objects
         List<Assignment> currentAssignments = new ArrayList<>();
         try {
@@ -104,6 +105,7 @@ public class EventManager {
             System.out.println("The list does not exist or nothing was found");
             return;
         }
+
         // Set assignmentRepository's array list and sort by due date
         assignmentRepository.setCurrentAssignments(currentAssignments);
         
@@ -114,7 +116,11 @@ public class EventManager {
         int userChoice = -1;
         boolean userIsViewing = true;
         while (userIsViewing) {
-            System.out.println(" 1. Show me all assignments \n 2. Filter by specific due date \n 3. Filter by class name \n 4. Exit Program (You can enter any OTHER number that 1, 2, and 3 \nSelect the number corresponding to the option: ");
+            System.out.println(" 1. Show me all assignments " +
+            "\n 2. Filter by specific due date \n 3. Filter by class name " +
+            "\n 4. Exit Program (You can enter any OTHER number that 1, 2, and 3 " + 
+            "\n  Select the number corresponding to the option: ");
+
             userChoice = sc.nextInt();
             sc.nextLine();
             switch(userChoice) {
@@ -125,15 +131,12 @@ public class EventManager {
                     Date userDate = null;
                     try {
                         userDate = generateDateFromString();
+                        assignmentRepository.displayByDueDate(userDate);
                     } catch(ParseException e) {
-                        System.out.println("Something went wrong during parsing");
-                        userIsViewing = false;
-                        continue;
+                        System.out.println("Something went wrong during parsing. Make sure your date is in the correct format. ");
+                        assignmentRepository.displayAllAssignments();
                     }
-                        
-                    assignmentRepository.displayByDueDate(userDate);
                     break;
-
                 case 3:
                     System.out.println("Enter the class name (Example like ITCS3112): ");
                     String userEntry = sc.nextLine();
