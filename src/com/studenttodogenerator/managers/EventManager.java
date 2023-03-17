@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Collections;
@@ -69,7 +70,7 @@ public class EventManager {
 
             listOfAssignments.add(assignment);
 
-            System.out.println("Add another assignment? Type `Y` to add another assignment. `N` to proceed to file naming: ");
+            System.out.println("Add another assignment? `N` to proceed to file naming. Type `Y` (or any other key) to add another assignment: ");
             String answer = sc.nextLine().toUpperCase();
 
             if (answer.equals("N")) {
@@ -121,31 +122,37 @@ public class EventManager {
             "\n 4. Exit Program (You can enter any OTHER number that 1, 2, and 3 " + 
             "\n  Select the number corresponding to the option: ");
 
-            userChoice = sc.nextInt();
-            sc.nextLine();
-            switch(userChoice) {
-                case 1:
-                    assignmentRepository.displayAllAssignments();
-                    break;
-                case 2:
-                    Date userDate = null;
-                    try {
-                        userDate = generateDateFromString();
-                        assignmentRepository.displayByDueDate(userDate);
-                    } catch(ParseException e) {
-                        System.out.println("Something went wrong during parsing. Make sure your date is in the correct format. ");
+            try {
+                userChoice = sc.nextInt();
+                sc.nextLine();
+                switch(userChoice) {
+                    case 1:
                         assignmentRepository.displayAllAssignments();
-                    }
-                    break;
-                case 3:
-                    System.out.println("Enter the class name (Example like ITCS3112): ");
-                    String userEntry = sc.nextLine();
-                    assignmentRepository.displayByClassName(userEntry);
-                    break;
+                        break;
+                    case 2:
+                        Date userDate = null;
+                        try {
+                            userDate = generateDateFromString();
+                            assignmentRepository.displayByDueDate(userDate);
+                        } catch(ParseException e) {
+                            System.out.println("Something went wrong during parsing. Make sure your date is in the correct format. ");
+                            assignmentRepository.displayAllAssignments();
+                        }
+                        break;
+                    case 3:
+                        System.out.println("Enter the class name (Example like ITCS3112): ");
+                        String userEntry = sc.nextLine();
+                        assignmentRepository.displayByClassName(userEntry);
+                        break;
 
-                default:
-                    userIsViewing = false;
-                    break;
+                    default:
+                        userIsViewing = false;
+                        break;
+                }
+            } catch(InputMismatchException e) {
+                System.out.println("You did not enter a number");
+                sc.nextLine();
+                continue;
             }
         
         }
