@@ -83,7 +83,7 @@ public class EventManager {
         String fileName = sc.nextLine();
 
         Collections.sort(listOfAssignments);
-        SheetWriter.writeSheet(listOfAssignments, fileName);
+        sheetWriter.writeSheet(listOfAssignments, fileName);
 
     }
 

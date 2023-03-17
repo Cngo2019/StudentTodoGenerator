@@ -24,7 +24,7 @@ public class SheetWriter {
 
     }
 
-    public static void writeSheet(List<Assignment> assignmentList, String scheduleName) {
+    public void writeSheet(List<Assignment> assignmentList, String scheduleName) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(scheduleName + ".txt"));
             for (Assignment assignment : assignmentList) {
