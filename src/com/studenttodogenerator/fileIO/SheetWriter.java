@@ -24,18 +24,13 @@ public class SheetWriter {
 
     }
 
-    public void writeSheet(List<Assignment> assignmentList, String scheduleName) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(scheduleName + ".txt"));
-            for (Assignment assignment : assignmentList) {
-                writer.write(assignment.getDueDate() + "\n" +
-                             assignment.getClassName()  + "\n" +
-                             assignment.getAssignmentDescription() + "\n\n");
-            }
-            writer.close();
-        } catch(IOException e) {
-
+    public void writeSheet(List<Assignment> assignmentList, String scheduleName) throws IOException {   
+        BufferedWriter writer = new BufferedWriter(new FileWriter(scheduleName + ".txt"));
+        for (Assignment assignment : assignmentList) {
+            writer.write(assignment.getDueDate() + "\n" +
+                            assignment.getClassName()  + "\n" +
+                            assignment.getAssignmentDescription() + "\n\n");
         }
-
+        writer.close();
     }
 }

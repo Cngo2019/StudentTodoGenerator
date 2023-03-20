@@ -5,6 +5,7 @@ import com.studenttodogenerator.fileIO.SheetWriter;
 import com.studenttodogenerator.model.Assignment;
 import com.studenttodogenerator.repositories.AssignmentRepository;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -77,13 +78,16 @@ public class EventManager {
                 break;
             }
         }
-
         
         System.out.println("Enter in the name of the file you want to create (DO NOT INCLUDE THE .txt EXTENSION): ");
         String fileName = sc.nextLine();
 
         Collections.sort(listOfAssignments);
-        sheetWriter.writeSheet(listOfAssignments, fileName);
+        try {
+            sheetWriter.writeSheet(listOfAssignments, fileName);
+        } catch(IOException e) {
+            System.out.println("Something went wrong when writing the sheet");
+        }
 
     }
 
