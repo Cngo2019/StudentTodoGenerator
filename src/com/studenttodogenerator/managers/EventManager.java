@@ -28,9 +28,9 @@ public class EventManager {
     public static EventManager getInstance() {
         if (eventManager == null) {
             eventManager = new EventManager();
-            eventManager.sheetReader = SheetReader.getInstance();
-            eventManager.sheetWriter = SheetWriter.getInstance();
-            eventManager.assignmentRepository = AssignmentRepository.getInstance();
+            eventManager.sheetReader = new SheetReader();
+            eventManager.sheetWriter = new SheetWriter();
+            eventManager.assignmentRepository = new AssignmentRepository();
         }
 
         return eventManager;

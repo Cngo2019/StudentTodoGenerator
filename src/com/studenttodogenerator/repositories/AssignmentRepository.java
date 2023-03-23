@@ -12,17 +12,8 @@ import java.util.Collections;
  */
 public class AssignmentRepository {
 
-    public static AssignmentRepository assignmentRepository;
-    public static AssignmentRepository getInstance() {
-        if (assignmentRepository == null) {
-            assignmentRepository = new AssignmentRepository();
-        }
-
-        return assignmentRepository;
-    }
-
-    List<Assignment> currentAssignments;
-    private AssignmentRepository() {
+    private List<Assignment> currentAssignments;
+    public AssignmentRepository() {
 
     }
 
@@ -52,18 +43,6 @@ public class AssignmentRepository {
             }
         }
     }
-
-
-    public void printCurrentAssignments() {
-        if (currentAssignments == null) {
-            return;
-        }
-
-        for (Assignment assignment : currentAssignments) {
-            System.out.println(assignment.toString() + "\n\n");
-        }
-    }
-
 
     public void displayAllAssignments() {
         System.out.println("================================= YOUR CURRENT ASSIGNMENTS ARE =================================");

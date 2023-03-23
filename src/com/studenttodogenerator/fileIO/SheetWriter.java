@@ -11,16 +11,8 @@ import java.util.List;
  * Class handles the writing of an excel file
  */
 public class SheetWriter {
-    public static SheetWriter SheetWriter;
-
-    public static SheetWriter getInstance() {
-        if (SheetWriter == null) {
-            SheetWriter = new SheetWriter();
-        }
-        return SheetWriter;
-    }
-
-    private SheetWriter() {
+    
+    public SheetWriter() {
 
     }
 
