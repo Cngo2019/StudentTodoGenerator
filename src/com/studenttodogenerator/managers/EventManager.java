@@ -113,11 +113,23 @@ public class EventManager {
 
         // Set assignmentRepository's array list and sort by due date
         assignmentRepository.setCurrentAssignments(currentAssignments);
-        
+
         System.out.println("\n\n\n Here is a list of all your assignments for this specific sheet: ");
-        // Display all the current todo assignments
         assignmentRepository.displayAllAssignments();
 
+        enterViewingTodoSheet(sc);
+    }
+
+    private Date generateDateFromString() throws ParseException {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter in the due date in mm-dd-yyyy format: ");
+            String dueDateInput = sc.nextLine();
+            SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+            Date dueDate = formatter.parse(dueDateInput + " 00:00:00");
+            return dueDate; 
+    }
+
+    private void enterViewingTodoSheet(Scanner sc) {
         int userChoice = -1;
         boolean userIsViewing = true;
         while (userIsViewing) {
@@ -151,6 +163,7 @@ public class EventManager {
 
                     default:
                         userIsViewing = false;
+                        System.out.println("\n\n\n\n");
                         break;
                 }
             } catch(InputMismatchException e) {
@@ -158,17 +171,6 @@ public class EventManager {
                 sc.nextLine();
                 continue;
             }
-        
         }
-            
-    }
-
-    private Date generateDateFromString() throws ParseException {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Enter in the due date in mm-dd-yyyy format: ");
-            String dueDateInput = sc.nextLine();
-            SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-            Date dueDate = formatter.parse(dueDateInput + " 00:00:00");
-            return dueDate; 
     }
 }
